@@ -1184,5 +1184,576 @@ footer {
         grid-template-columns: repeat(2, 1fr);
     }
 }
+/* =========================== */
+/* ANIMATIONS SECTION          */
+/* =========================== */
+
+/* 1. LOADING ANIMATION WITH GLASSES */
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+.loading-screen.loaded {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.glasses-container {
+    position: relative;
+    width: 180px;
+    height: 120px;
+}
+
+.glasses-frame {
+    position: absolute;
+    width: 180px;
+    height: 80px;
+    border: 8px solid white;
+    border-radius: 50% 50% 40% 40%;
+    animation: glassesFloat 3s ease-in-out infinite;
+}
+
+.glasses-frame:before,
+.glasses-frame:after {
+    content: '';
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border: 8px solid white;
+    border-radius: 50%;
+    top: -8px;
+}
+
+.glasses-frame:before {
+    left: -8px;
+}
+
+.glasses-frame:after {
+    right: -8px;
+}
+
+.glasses-bridge {
+    position: absolute;
+    width: 40px;
+    height: 8px;
+    background: white;
+    top: 36px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.glasses-temples {
+    position: absolute;
+    width: 60px;
+    height: 8px;
+    background: white;
+    top: 36px;
+}
+
+.glasses-temples:before {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 30px;
+    background: white;
+    right: 0;
+    bottom: -30px;
+}
+
+.glasses-temples.left {
+    left: -60px;
+    transform: rotate(20deg);
+    transform-origin: right center;
+    animation: templeLeft 2s ease-in-out infinite;
+}
+
+.glasses-temples.right {
+    right: -60px;
+    transform: rotate(-20deg);
+    transform-origin: left center;
+    animation: templeRight 2s ease-in-out infinite;
+}
+
+.loading-text {
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+    margin-top: 40px;
+    letter-spacing: 2px;
+}
+
+.loading-dots {
+    display: inline-block;
+    margin-left: 5px;
+}
+
+.loading-dots span {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: white;
+    border-radius: 50%;
+    margin: 0 2px;
+    opacity: 0;
+}
+
+.loading-dots span:nth-child(1) { animation: dotPulse 1.5s infinite 0.1s; }
+.loading-dots span:nth-child(2) { animation: dotPulse 1.5s infinite 0.3s; }
+.loading-dots span:nth-child(3) { animation: dotPulse 1.5s infinite 0.5s; }
+
+@keyframes glassesFloat {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(2deg); }
+}
+
+@keyframes templeLeft {
+    0%, 100% { transform: rotate(20deg); }
+    50% { transform: rotate(15deg); }
+}
+
+@keyframes templeRight {
+    0%, 100% { transform: rotate(-20deg); }
+    50% { transform: rotate(-15deg); }
+}
+
+@keyframes dotPulse {
+    0%, 100% { opacity: 0.3; transform: scale(0.8); }
+    50% { opacity: 1; transform: scale(1); }
+}
+
+/* 2. TYPING EFFECT STYLES */
+.typing-container {
+    display: inline-block;
+    position: relative;
+}
+
+.typing-cursor {
+    display: inline-block;
+    width: 3px;
+    height: 1.2em;
+    background: var(--secondary);
+    margin-left: 2px;
+    animation: cursorBlink 0.8s infinite;
+    vertical-align: middle;
+}
+
+@keyframes cursorBlink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* 3. PULSE ANIMATIONS */
+@keyframes pulse {
+    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(var(--primary-rgb), 0.7); }
+    70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(var(--primary-rgb), 0); }
+    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(var(--primary-rgb), 0); }
+}
+
+.pulse-animation {
+    animation: pulse 2s infinite;
+}
+
+/* 4. FLOATING ANIMATIONS */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+.floating-animation {
+    animation: float 3s ease-in-out infinite;
+}
+
+/* 5. ENHANCED HOVER EFFECTS */
+.zoom-hover {
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.zoom-hover:hover {
+    transform: scale(1.05);
+}
+
+/* 6. COUNTER ANIMATION */
+.counter {
+    font-feature-settings: "tnum";
+    font-variant-numeric: tabular-nums;
+}
+
+/* 7. TESTIMONIAL SLIDER ANIMATIONS */
+.testimonials-slider {
+    position: relative;
+    overflow: hidden;
+}
+
+.testimonial-card {
+    transition: transform 0.6s ease, opacity 0.6s ease;
+}
+
+/* 8. PARALLAX EFFECTS */
+.parallax-section {
+    position: relative;
+    overflow: hidden;
+}
+
+.parallax-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 120%;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: -1;
+    transform: translateZ(0);
+}
+
+/* 9. BACK TO TOP BUTTON */
+.back-to-top {
+    position: fixed;
+    bottom: 100px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: var(--primary);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+    z-index: 999;
+    box-shadow: 0 4px 15px rgba(26, 95, 122, 0.3);
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.back-to-top:hover {
+    background: var(--secondary);
+    transform: translateY(-5px) !important;
+}
+
+/* 10. WAVE ANIMATIONS IN FOOTER */
+.wave-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.wave {
+    position: relative;
+    width: 100%;
+    height: 60px;
+}
+
+.wave::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 200%;
+    height: 100%;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z' fill='%231a5f7a'%3E%3C/path%3E%3C/svg%3E");
+    background-repeat: repeat-x;
+    background-size: 1200px 60px;
+    animation: waveMove 25s linear infinite;
+}
+
+@keyframes waveMove {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-600px); }
+}
+
+/* 11. SOCIAL MEDIA ICON ANIMATIONS */
+.social-links a {
+    position: relative;
+    overflow: hidden;
+}
+
+.social-links a::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.social-links a:hover::before {
+    width: 100px;
+    height: 100px;
+}
+
+/* 12. FILTER BUTTON ANIMATIONS */
+.filter-btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.filter-btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.filter-btn:hover::after {
+    width: 100px;
+    height: 100px;
+}
+
+.filter-btn.active {
+    animation: filterPulse 0.6s ease;
+}
+
+@keyframes filterPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+/* 13. IMAGE FRAME ANIMATIONS */
+.image-frame {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.image-frame::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    z-index: 1;
+    transition: border-color 0.5s ease;
+}
+
+.image-frame:hover::before {
+    border-color: var(--secondary);
+    animation: frameGlow 1.5s ease-in-out infinite;
+}
+
+@keyframes frameGlow {
+    0%, 100% { border-color: var(--secondary); box-shadow: 0 0 10px rgba(87, 197, 182, 0.5); }
+    50% { border-color: var(--primary); box-shadow: 0 0 20px rgba(26, 95, 122, 0.8); }
+}
+
+/* 14. FADE IN ANIMATIONS */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.stagger-delay-1 { transition-delay: 0.1s; }
+.stagger-delay-2 { transition-delay: 0.2s; }
+.stagger-delay-3 { transition-delay: 0.3s; }
+.stagger-delay-4 { transition-delay: 0.4s; }
+.stagger-delay-5 { transition-delay: 0.5s; }
+
+/* 15. MOBILE OPTIMIZATION */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    .floating-animation,
+    .pulse-animation {
+        animation: none !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .floating-animation {
+        animation-duration: 4s;
+    }
+    
+    .pulse-animation {
+        animation-duration: 3s;
+    }
+    
+    .back-to-top {
+        bottom: 80px;
+        right: 20px;
+        width: 45px;
+        height: 45px;
+        font-size: 18px;
+    }
+    
+    .loading-text {
+        font-size: 16px;
+    }
+    
+    .glasses-container {
+        width: 140px;
+        height: 100px;
+    }
+}
+
+/* ANIMATION UTILITY CLASSES */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease;
+}
+
+.animate-on-scroll.animated {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* GSAP ANIMATION CLASSES */
+.gsap-reveal {
+    opacity: 0;
+    transform: translateY(50px);
+}
+
+/* ADD TO EXISTING CSS */
+:root {
+    --primary-rgb: 26, 95, 122;
+}
+
+/* Update existing button to include pulse */
+.btn-primary.pulse {
+    animation: pulse 2s infinite;
+}
+
+/* Update existing service cards for floating */
+.service-card.floating-animation {
+    animation: float 6s ease-in-out infinite;
+}
+
+/* Update existing frame cards for floating with delay */
+.frame-card:nth-child(odd) {
+    animation: float 5s ease-in-out infinite;
+}
+
+.frame-card:nth-child(even) {
+    animation: float 5s ease-in-out infinite 1s;
+}
+
+/* Update existing hero image for image frame animation */
+.hero-image, .about-image {
+    position: relative;
+}
+
+.hero-image::before, .about-image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    z-index: 1;
+    transition: all 0.5s ease;
+}
+
+.hero-image:hover::before, .about-image:hover::before {
+    border-color: var(--secondary);
+    box-shadow: 0 0 20px rgba(87, 197, 182, 0.5);
+}
+
+/* Update existing testimonial slider for auto-rotation */
+.testimonials-slider {
+    position: relative;
+    min-height: 300px;
+}
+
+.testimonial-card {
+    position: absolute;
+    width: 100%;
+    opacity: 0;
+    transform: translateX(50px);
+    transition: all 0.8s ease;
+}
+
+.testimonial-card.active {
+    opacity: 1;
+    transform: translateX(0);
+    position: relative;
+}
+
+/* Add wave to footer */
+footer {
+    position: relative;
+}
+
+footer::before {
+    content: '';
+    position: absolute;
+    top: -60px;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z' fill='%232d3436'%3E%3C/path%3E%3C/svg%3E");
+    background-repeat: repeat-x;
+    background-size: 1200px 60px;
+    animation: waveMove 25s linear infinite;
+}
+
+/* Parallax hero section */
+.hero {
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(26, 95, 122, 0.1), rgba(87, 197, 182, 0.1));
+    transform: translateZ(-1px) scale(1.5);
+    z-index: -1;
+}
+
 
 
