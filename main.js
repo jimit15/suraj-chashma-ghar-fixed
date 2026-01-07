@@ -1,3 +1,403 @@
+// ============================================
+// ANIMATED WEBSITE WITH ALL 15 ANIMATIONS
+// ============================================
+
+// 1. LOADING ANIMATION WITH GLASSES
+const loadingScreen = document.createElement('div');
+loadingScreen.className = 'loading-screen';
+loadingScreen.innerHTML = `
+    <div class="glasses-container">
+        <div class="glasses-frame"></div>
+        <div class="glasses-bridge"></div>
+        <div class="glasses-temples left"></div>
+        <div class="glasses-temples right"></div>
+    </div>
+    <div class="loading-text">
+        Suraj Chashma Ghar
+        <div class="loading-dots">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+`;
+
+// Add loading screen to body
+document.body.appendChild(loadingScreen);
+
+// Remove loading screen after page load
+window.addEventListener('load', () => {
+    setTimeout(() => {
+        loadingScreen.classList.add('loaded');
+        setTimeout(() => {
+            loadingScreen.style.display = 'none';
+        }, 800);
+    }, 1500);
+});
+
+// 2. TYPING EFFECT FOR HERO TEXT
+function initTypingEffect() {
+    const heroText = document.querySelector('.hero-text h2');
+    if (!heroText) return;
+    
+    const originalText = heroText.textContent;
+    const textArray = [
+        "Vision Care with Style & Precision",
+        "Premium Eyewear Since 2012",
+        "Professional Eye Testing",
+        "Trusted by Nikol Community"
+    ];
+    
+    let currentTextIndex = 0;
+    let currentCharIndex = 0;
+    let isDeleting = false;
+    let isTyping = true;
+    
+    heroText.textContent = '';
+    
+    function type() {
+        const currentText = textArray[currentTextIndex];
+        
+        if (isTyping) {
+            if (currentCharIndex < currentText.length) {
+                heroText.textContent = currentText.substring(0, currentCharIndex + 1);
+                currentCharIndex++;
+                setTimeout(type, 100);
+            } else {
+                isTyping = false;
+                setTimeout(() => {
+                    isDeleting = true;
+                    type();
+                }, 2000);
+            }
+        } else if (isDeleting) {
+            if (currentCharIndex > 0) {
+                heroText.textContent = currentText.substring(0, currentCharIndex - 1);
+                currentCharIndex--;
+                setTimeout(type, 50);
+            } else {
+                isDeleting = false;
+                currentTextIndex = (currentTextIndex + 1) % textArray.length;
+                isTyping = true;
+                setTimeout(type, 500);
+            }
+        }
+    }
+    
+    // Start typing effect after loading screen
+    setTimeout(type, 1800);
+}
+
+// 3. GSAP SMOOTH SCROLL ANIMATIONS
+function initGSAPAnimations() {
+    // Only run if GSAP is available
+    if (typeof gsap === 'undefined') return;
+    
+    gsap.registerPlugin(ScrollTrigger);
+    
+    // Hero section animation
+    gsap.from('.hero-text', {
+        duration: 1,
+        y: 50,
+        opacity: 0,
+        delay: 0.5,
+        ease: "power3.out"
+    });
+    
+    gsap.from('.hero-image', {
+        duration: 1,
+        x: 50,
+        opacity: 0,
+        delay: 0.8,
+        ease: "power3.out"
+    });
+    
+    // Service cards animation
+    gsap.from('.service-card', {
+        scrollTrigger: {
+            trigger: '.services',
+            start: 'top 80%',
+            toggleActions: 'play none none none'
+        },
+        duration: 0.8,
+        y: 50,
+        opacity: 0,
+        stagger: 0.2,
+        ease: "power3.out"
+    });
+    
+    // About section animation
+    gsap.from('.about-text', {
+        scrollTrigger: {
+            trigger: '.about',
+            start: 'top 70%',
+            toggleActions: 'play none none none'
+        },
+        duration: 1,
+        x: -50,
+        opacity: 0,
+        ease: "power3.out"
+    });
+    
+    gsap.from('.about-image', {
+        scrollTrigger: {
+            trigger: '.about',
+            start: 'top 70%',
+            toggleActions: 'play none none none'
+        },
+        duration: 1,
+        x: 50,
+        opacity: 0,
+        ease: "power3.out"
+    });
+    
+    // Testimonial cards animation
+    gsap.from('.testimonial-card', {
+        scrollTrigger: {
+            trigger: '.testimonials',
+            start: 'top 80%',
+            toggleActions: 'play none none none'
+        },
+        duration: 0.8,
+        y: 50,
+        opacity: 0,
+        stagger: 0.3,
+        ease: "power3.out"
+    });
+    
+    // Frame cards animation
+    gsap.from('.frame-card', {
+        scrollTrigger: {
+            trigger: '.frames',
+            start: 'top 80%',
+            toggleActions: 'play none none none'
+        },
+        duration: 0.6,
+        y: 30,
+        opacity: 0,
+        stagger: 0.1,
+        ease: "power2.out"
+    });
+}
+
+// 4. PULSE ANIMATIONS FOR BUTTONS
+function initPulseAnimations() {
+    const ctaButtons = document.querySelectorAll('.btn-primary');
+    ctaButtons.forEach(button => {
+        button.classList.add('pulse-animation');
+        
+        // Add hover effect
+        button.addEventListener('mouseenter', () => {
+            button.style.animationPlayState = 'paused';
+        });
+        
+        button.addEventListener('mouseleave', () => {
+            button.style.animationPlayState = 'running';
+        });
+    });
+}
+
+// 5. FLOATING ANIMATIONS FOR CARDS
+function initFloatingAnimations() {
+    const serviceCards = document.querySelectorAll('.service-card');
+    serviceCards.forEach(card => {
+        card.classList.add('floating-animation');
+    });
+    
+    const frameCards = document.querySelectorAll('.frame-card');
+    frameCards.forEach((card, index) => {
+        card.style.animationDelay = `${(index % 3) * 0.5}s`;
+    });
+}
+
+// 6. ENHANCED HOVER EFFECTS
+function initHoverEffects() {
+    // Add zoom hover to images
+    const images = document.querySelectorAll('.hero-image, .about-image, .frame-image img');
+    images.forEach(img => {
+        img.parentElement.classList.add('zoom-hover');
+    });
+    
+    // Add image frame animation
+    const heroImage = document.querySelector('.hero-image');
+    const aboutImage = document.querySelector('.about-image');
+    if (heroImage) heroImage.classList.add('image-frame');
+    if (aboutImage) aboutImage.classList.add('image-frame');
+}
+
+// 7. COUNTER ANIMATIONS FOR STATS
+function initCounterAnimations() {
+    const stats = document.querySelectorAll('.stat-number');
+    if (stats.length === 0) return;
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const target = entry.target;
+                const finalValue = parseInt(target.textContent);
+                const duration = 2000;
+                const increment = finalValue / (duration / 16);
+                let current = 0;
+                
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= finalValue) {
+                        target.textContent = finalValue + '+';
+                        clearInterval(timer);
+                    } else {
+                        target.textContent = Math.floor(current);
+                    }
+                }, 16);
+                
+                observer.unobserve(target);
+            }
+        });
+    }, { threshold: 0.5 });
+    
+    stats.forEach(stat => observer.observe(stat));
+}
+
+// 8. TESTIMONIAL SLIDER WITH AUTO-ROTATION
+function initTestimonialSlider() {
+    const testimonials = document.querySelectorAll('.testimonial-card');
+    if (testimonials.length === 0) return;
+    
+    let currentIndex = 0;
+    
+    // Initially show first testimonial
+    testimonials.forEach((testimonial, index) => {
+        testimonial.style.opacity = '0';
+        testimonial.style.position = 'absolute';
+        if (index === 0) {
+            testimonial.style.opacity = '1';
+            testimonial.style.position = 'relative';
+        }
+    });
+    
+    function showNextTestimonial() {
+        // Hide current
+        testimonials[currentIndex].style.opacity = '0';
+        testimonials[currentIndex].style.position = 'absolute';
+        
+        // Update index
+        currentIndex = (currentIndex + 1) % testimonials.length;
+        
+        // Show next
+        testimonials[currentIndex].style.opacity = '1';
+        testimonials[currentIndex].style.position = 'relative';
+    }
+    
+    // Auto rotate every 5 seconds
+    setInterval(showNextTestimonial, 5000);
+}
+
+// 9. PARALLAX SCROLLING EFFECTS
+function initParallaxEffects() {
+    window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        const parallaxElements = document.querySelectorAll('.hero, .about');
+        
+        parallaxElements.forEach(element => {
+            const rate = scrolled * -0.5;
+            element.style.backgroundPosition = `center ${rate}px`;
+        });
+    });
+}
+
+// 10. BACK TO TOP BUTTON
+function initBackToTopButton() {
+    const backToTopBtn = document.createElement('div');
+    backToTopBtn.className = 'back-to-top';
+    backToTopBtn.innerHTML = '<i class="fas fa-chevron-up"></i>';
+    document.body.appendChild(backToTopBtn);
+    
+    // Show/hide button on scroll
+    window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) {
+            backToTopBtn.classList.add('visible');
+        } else {
+            backToTopBtn.classList.remove('visible');
+        }
+    });
+    
+    // Scroll to top on click
+    backToTopBtn.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+}
+
+// 11. WAVE ANIMATIONS
+function initWaveAnimations() {
+    // Wave is already implemented in CSS
+    // This function is for potential JS control
+}
+
+// 12. SOCIAL MEDIA ICON ANIMATIONS
+function initSocialAnimations() {
+    const socialIcons = document.querySelectorAll('.social-links a, .float-btn');
+    socialIcons.forEach(icon => {
+        icon.addEventListener('mouseenter', () => {
+            icon.style.transform = 'translateY(-5px) scale(1.1)';
+        });
+        
+        icon.addEventListener('mouseleave', () => {
+            icon.style.transform = 'translateY(0) scale(1)';
+        });
+    });
+}
+
+// 13. FILTER BUTTON ANIMATIONS
+function initFilterAnimations() {
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // Add click animation
+            this.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                this.style.transform = 'scale(1)';
+            }, 150);
+        });
+    });
+}
+
+// 14. FADE IN ON SCROLL
+function initFadeInOnScroll() {
+    const fadeElements = document.querySelectorAll('.service-card, .frame-card, .testimonial-card, .category-card, .contact-card');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animated');
+            }
+        });
+    }, { threshold: 0.1 });
+    
+    fadeElements.forEach(el => {
+        el.classList.add('animate-on-scroll');
+        observer.observe(el);
+    });
+}
+
+// 15. MOBILE OPTIMIZED ANIMATIONS
+function optimizeAnimationsForMobile() {
+    const isMobile = window.innerWidth <= 768;
+    
+    if (isMobile) {
+        // Reduce animation intensity on mobile
+        document.documentElement.style.setProperty('--animation-duration-multiplier', '1.5');
+        
+        // Disable some heavy animations on low-end devices
+        if ('hardwareConcurrency' in navigator && navigator.hardwareConcurrency <= 4) {
+            const heavyAnimations = document.querySelectorAll('.floating-animation, .pulse-animation');
+            heavyAnimations.forEach(el => {
+                el.style.animation = 'none';
+            });
+        }
+    }
+}
 // Mobile Menu Toggle
 const mobileMenuBtn = document.getElementById('mobileMenuBtn');
 const mobileNav = document.getElementById('mobileNav');
@@ -116,8 +516,10 @@ const frames = [
         category: "men", 
         type: ["Plastic"], 
         price: "₹1,499", 
-        image: "https://images.unsplash.com/photo-1583292650899-5c7c36f921c2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+        image: "https://images.unsplash.com/photo-1511499767150-a48a237f0083?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+
     },
+   
     { 
         id: 2, 
         name: "Modern Square Frame", 
@@ -142,7 +544,7 @@ const frames = [
         category: "women", 
         type: ["Plastic", "Designer"], 
         price: "₹1,799", 
-        image: "https://images.unsplash.com/photo-1556306535-38febf6783e7?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+        image: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
     },
     { 
         id: 5, 
@@ -150,7 +552,7 @@ const frames = [
         category: "women", 
         type: ["Metal"], 
         price: "₹2,199", 
-        image: "https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+        image: "https://images.unsplash.com/photo-1511499767150-a48a237f0083?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
     },
     { 
         id: 6, 
@@ -158,7 +560,7 @@ const frames = [
         category: "women", 
         type: ["Plastic"], 
         price: "₹1,699", 
-        image: "https://images.unsplash.com/photo-1572248364230-7f412885f2da?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+        image: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
     },
     
     // Kids Frames
@@ -168,7 +570,7 @@ const frames = [
         category: "kids", 
         type: ["Plastic", "Flexible"], 
         price: "₹999", 
-        image: "https://images.unsplash.com/photo-1552880987-9c3d8d1b71e7?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+        image: "https://images.unsplash.com/photo-1511499767150-a48a237f0083?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
     },
     { 
         id: 8, 
@@ -176,7 +578,7 @@ const frames = [
         category: "kids", 
         type: ["Plastic"], 
         price: "₹1,299", 
-        image: "https://images.unsplash.com/photo-1612810806695-30f7a8258391?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+        image: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
     },
     
     // Sunglasses
@@ -202,7 +604,7 @@ const frames = [
         category: "sunglasses", 
         type: ["Plastic", "Sports"], 
         price: "₹2,499", 
-        image: "https://images.unsplash.com/photo-1556306535-0d09aec3c8e8?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+        image: "https://images.unsplash.com/photo-1511499767150-a48a237f0083?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
     },
     { 
         id: 12, 
@@ -210,7 +612,7 @@ const frames = [
         category: "sunglasses", 
         type: ["Metal", "Designer"], 
         price: "₹2,999", 
-        image: "https://images.unsplash.com/photo-1572569511254-d8f925fe2cbb?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+        image: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
     }
 ];
 
@@ -409,4 +811,5 @@ document.querySelectorAll('.btn-primary[href="#contact"]').forEach(button => {
         }
     });
 });
+
 
