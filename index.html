@@ -3,588 +3,397 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Suraj Chashma Ghar | Premium Eyewear & Professional Eye Testing Since 2012</title>
-    
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-    
-    <!-- Your CSS -->
-    <link rel="stylesheet" href="style.css">
-    
-    <!-- GSAP for Animations (ADD THESE) -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <title>Finance/Loan Management System - JG University</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Header Section -->
-    <header>
-        <div class="container">
-            <div class="header-container">
-                <div class="logo">
-                    <div class="logo-icon">
-                        <i class="fas fa-glasses"></i>
-                    </div>
-                    <div class="logo-text">
-                        <h1>Suraj <span>Chashma Ghar</span></h1>
-                        <p>Premium Eyewear & Eye Care Since 2012</p>
-                    </div>
-                </div>
-                
-                <div class="rating-badge">
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                    <div class="rating-text">
-                        4.9 <span>(37+ Reviews)</span>
-                    </div>
-                </div>
-                
-                <nav class="desktop-nav">
-                    <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#services">Services</a></li>
-                        <li><a href="#frames">Frames</a></li>
-                        <li><a href="#testimonials">Reviews</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </nav>
-                
-                <div class="header-cta">
-                    <a href="tel:7069343403" class="call-btn">
-                        <i class="fas fa-phone"></i> Call Now
-                    </a>
-                    <button class="mobile-menu-btn" id="mobileMenuBtn">
-                        <i class="fas fa-bars"></i>
-                    </button>
-                </div>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="logo">💰 FinLoan System</div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#objectives">Objectives</a></li>
+                <li><a href="#calculator">EMI Calculator</a></li>
+                <li><a href="#apply">Apply Loan</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#login" class="btn-login">Login</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
         </div>
-        
-        <!-- Mobile Navigation -->
-        <nav class="mobile-nav" id="mobileNav">
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#frames">Frames</a></li>
-                <li><a href="#testimonials">Reviews</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li>
-                    <a href="https://wa.me/917069343403" class="whatsapp-btn">
-                        <i class="fab fa-whatsapp"></i> WhatsApp
-                    </a>
-                </li>
-                <li>
-                    <a href="https://youtube.com/@kathanshah56?si=gy3ou2pSTDFUp84j" class="youtube-btn" target="_blank">
-                        <i class="fab fa-youtube"></i> YouTube
-                    </a>
-                </li>
-                <li>
-                    <a href="https://www.facebook.com/share/1jQUBsT28T/" class="facebook-btn" target="_blank">
-                        <i class="fab fa-facebook"></i> Facebook
-                    </a>
-                </li>
-                <li>
-                    <a href="https://www.instagram.com/suraj_chashma_ghar?igsh=b3B0OXJoY2Yyd3Jk" class="instagram-btn" target="_blank">
-                        <i class="fab fa-instagram"></i> Instagram
-                    </a>
-                </li>
-                <li>
-                    <a href="#feedback" class="feedback-btn">
-                        <i class="fas fa-star"></i> Give Feedback
-                    </a>
-                </li>
-            </ul>
-        </nav>
-    </header>
+    </nav>
 
     <!-- Hero Section -->
-    <section class="hero" id="home">
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="fade-in">Finance/Loan Management System</h1>
+            <p class="fade-in">A web-based application designed to manage loan-related activities such as customer registration, loan application, approval, EMI calculation, repayment tracking, and report generation.</p>
+            <div class="hero-buttons fade-in">
+                <a href="#apply" class="btn-primary">Apply for Loan</a>
+                <a href="#calculator" class="btn-secondary">Calculate EMI</a>
+            </div>
+        </div>
+        <div class="hero-stats">
+            <div class="stat-card">
+                <h3 id="customerCount">0</h3>
+                <p>Happy Customers</p>
+            </div>
+            <div class="stat-card">
+                <h3 id="loanCount">0</h3>
+                <p>Loans Approved</p>
+            </div>
+            <div class="stat-card">
+                <h3 id="processingTime">0</h3>
+                <p>Hours Processing Time</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features">
         <div class="container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h2>Vision Care with Style & Precision</h2>
-                    <p>Experience premium eyewear solutions with professional eye testing by certified optometrist at Suraj Chashma Ghar. Your trusted optical shop since 2012.</p>
-                    <div class="hero-btns">
-                        <a href="#contact" class="btn-primary">Book Eye Test</a>
-                        <a href="#frames" class="btn-secondary">View Frames</a>
-                    </div>
-                    <div class="hero-features">
-                        <div class="feature">
-                            <i class="fas fa-user-md"></i>
-                            <span>Certified Optometrist</span>
-                        </div>
-                        <div class="feature">
-                            <i class="fas fa-award"></i>
-                            <span>12+ Years Experience</span>
-                        </div>
-                        <div class="feature">
-                            <i class="fas fa-rupee-sign"></i>
-                            <span>Affordable Prices</span>
-                        </div>
-                    </div>
+            <h2 class="section-title">System Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">👤</div>
+                    <h3>Customer Registration</h3>
+                    <p>Easy online registration facility for new customers with secure data storage and quick verification process.</p>
                 </div>
-                <div class="hero-image">
-                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Premium Eyewear Collection">
+                <div class="feature-card">
+                    <div class="feature-icon">📝</div>
+                    <h3>Loan Application</h3>
+                    <p>Simple and fast online loan application process with instant submission and tracking capabilities.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🧮</div>
+                    <h3>EMI Calculation</h3>
+                    <p>Automatic and accurate EMI calculation based on loan amount, interest rate, and tenure.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">✅</div>
+                    <h3>Admin Approval</h3>
+                    <p>Efficient admin panel for quick loan approval or rejection with comprehensive dashboard.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💾</div>
+                    <h3>Secure Storage</h3>
+                    <p>Centralized database management with secure digital storage of all customer and loan records.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Report Generation</h3>
+                    <p>Instant access to comprehensive loan reports for better decision-making and analytics.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section class="about" id="about">
+    <!-- Objectives Section -->
+    <section id="objectives">
         <div class="container">
-            <div class="section-header">
-                <h2>About Suraj Chashma Ghar</h2>
-                <p>Serving Nikol community with quality eyewear since 2012</p>
-            </div>
-            <div class="about-content">
-                <div class="about-text">
-                    <h3>Trusted Optical Shop Since 2012</h3>
-                    <p>Established in 2012 by <strong>Kathan Shah</strong>, Suraj Chashma Ghar has been the trusted optical destination in Nikol, Ahmedabad. With professional eye testing by certified optometrist, we provide personalized vision solutions.</p>
-                    
-                    <div class="about-stats">
-                        <div class="stat">
-                            <div class="stat-number">12+</div>
-                            <div class="stat-label">Years Experience</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-number">20000+</div>
-                            <div class="stat-label">Happy Customers</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-number">4.9</div>
-                            <div class="stat-label">Star Rating</div>
-                        </div>
-                    </div>
-                    
-                    <div class="features">
-                        <div class="feature">
-                            <i class="fas fa-eye"></i>
-                            <div>
-                                <h4>Advanced Eye Testing</h4>
-                                <p>Professional equipment for accurate prescription</p>
-                            </div>
-                        </div>
-                        <div class="feature">
-                            <i class="fas fa-glasses"></i>
-                            <div>
-                                <h4>Premium Frames</h4>
-                                <p>Wide selection of latest designs</p>
-                            </div>
-                        </div>
-                        <div class="feature">
-                            <i class="fas fa-tags"></i>
-                            <div>
-                                <h4>Best Prices</h4>
-                                <p>Quality eyewear at affordable rates</p>
-                            </div>
-                        </div>
-                        <div class="feature">
-                            <i class="fas fa-user-friends"></i>
-                            <div>
-                                <h4>Expert Guidance</h4>
-                                <p>Personalized service for every customer</p>
-                            </div>
-                        </div>
-                    </div>
+            <h2 class="section-title">Our Objectives</h2>
+            <div class="objectives-grid">
+                <div class="objective-card">
+                    <h3>🎯 Automate Loan Processing</h3>
+                    <p>Replace manual loan processing with an online system that allows customers to apply for loans and enables administrators to approve or reject applications quickly.</p>
                 </div>
-                <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Professional Eye Testing">
+                <div class="objective-card">
+                    <h3>💼 Centralized Data Management</h3>
+                    <p>Store all customer and loan-related information in a single secure database for easy access and management.</p>
+                </div>
+                <div class="objective-card">
+                    <h3>📄 Reduce Paperwork</h3>
+                    <p>Minimize paper-based records and human mistakes by using digital forms and automated calculations.</p>
+                </div>
+                <div class="objective-card">
+                    <h3>💳 Accurate EMI Tracking</h3>
+                    <p>Automatically calculate EMIs based on loan amount, interest rate, and tenure, and help track repayment details efficiently.</p>
+                </div>
+                <div class="objective-card">
+                    <h3>📈 Quick Access to Reports</h3>
+                    <p>Generate and view loan reports instantly, helping administrators make better and faster decisions.</p>
+                </div>
+                <div class="objective-card">
+                    <h3>🔒 Enhanced Security</h3>
+                    <p>Ensure secure and reliable data storage with user authentication and role-based access control.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section class="services" id="services">
+    <!-- Advantages Section -->
+    <section id="advantages">
         <div class="container">
-            <div class="section-header">
-                <h2>Our Services</h2>
-                <p>Comprehensive eye care solutions for all ages</p>
+            <h2 class="section-title">Key Advantages</h2>
+            <div class="advantages-container">
+                <div class="advantage-item">✓ Saves time and manual effort</div>
+                <div class="advantage-item">✓ Reduces paperwork and file handling</div>
+                <div class="advantage-item">✓ Accurate and automatic EMI calculation</div>
+                <div class="advantage-item">✓ Faster loan processing and approval</div>
+                <div class="advantage-item">✓ Easy access to customer and loan data</div>
+                <div class="advantage-item">✓ Centralized database management</div>
+                <div class="advantage-item">✓ Reduces human errors</div>
+                <div class="advantage-item">✓ Secure and reliable data storage</div>
+                <div class="advantage-item">✓ Improves overall efficiency</div>
+                <div class="advantage-item">✓ User-friendly system</div>
             </div>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-eye"></i>
+        </div>
+    </section>
+
+    <!-- EMI Calculator Section -->
+    <section id="calculator">
+        <div class="container">
+            <h2 class="section-title">EMI Calculator</h2>
+            <div class="calculator-container">
+                <form id="emiForm">
+                    <div class="form-group">
+                        <label for="loanAmount">Loan Amount (₹)</label>
+                        <input type="number" id="loanAmount" placeholder="Enter loan amount" required min="1000">
+                        <input type="range" id="loanAmountRange" min="10000" max="10000000" value="500000" step="10000">
+                        <span id="loanAmountDisplay">₹5,00,000</span>
                     </div>
-                    <h3>Professional Eye Testing</h3>
-                    <p>Thorough eye examination using advanced equipment by certified optometrist for accurate prescription.</p>
-                    <div class="service-time">
-                        <i class="fas fa-clock"></i> 30-45 mins
+                    <div class="form-group">
+                        <label for="interestRate">Annual Interest Rate (%)</label>
+                        <input type="number" id="interestRate" placeholder="Enter interest rate" required min="1" max="30" step="0.1">
+                        <input type="range" id="interestRateRange" min="5" max="20" value="10" step="0.1">
+                        <span id="interestRateDisplay">10%</span>
                     </div>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-glasses"></i>
+                    <div class="form-group">
+                        <label for="loanTenure">Loan Tenure (Months)</label>
+                        <input type="number" id="loanTenure" placeholder="Enter tenure in months" required min="6" max="360">
+                        <input type="range" id="loanTenureRange" min="6" max="360" value="60" step="6">
+                        <span id="loanTenureDisplay">60 months (5 years)</span>
                     </div>
-                    <h3>Prescription Glasses</h3>
-                    <p>Wide selection of frames and high-quality lenses tailored to your needs with expert advice.</p>
-                    <div class="service-time">
-                        <i class="fas fa-clock"></i> Ready in 1-2 hours
-                    </div>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-sun"></i>
-                    </div>
-                    <h3>Sunglasses & UV Protection</h3>
-                    <p>Fashionable sunglasses with 100% UV protection for style and eye safety.</p>
-                    <div class="service-time">
-                        <i class="fas fa-clock"></i> Immediate
-                    </div>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-procedures"></i>
-                    </div>
-                    <h3>Cataract Glasses</h3>
-                    <p>Specialized eyewear solutions for cataract patients with proper guidance.</p>
-                    <div class="service-time">
-                        <i class="fas fa-clock"></i> Consultation Required
-                    </div>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-child"></i>
-                    </div>
-                    <h3>Kids Eyewear</h3>
-                    <p>Durable, colorful & comfortable frames specially designed for children.</p>
-                    <div class="service-time">
-                        <i class="fas fa-clock"></i> 20-30 mins
-                    </div>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-tools"></i>
-                    </div>
-                    <h3>Repairs & Adjustments</h3>
-                    <p>Expert frame adjustments, repairs, and lens replacements to extend eyewear life.</p>
-                    <div class="service-time">
-                        <i class="fas fa-clock"></i> 15-20 mins
+                    <button type="submit" class="submit-btn">Calculate EMI</button>
+                </form>
+                <div id="emiResult" class="result" style="display: none;">
+                    <h3>Monthly EMI: ₹<span id="emiAmount">0</span></h3>
+                    <p>Total Interest: ₹<span id="totalInterest">0</span></p>
+                    <p>Total Amount: ₹<span id="totalAmount">0</span></p>
+                    <div class="chart-container">
+                        <canvas id="emiChart"></canvas>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Frames Section -->
-    <section class="frames" id="frames">
+    <!-- Loan Application Section -->
+    <section id="apply">
         <div class="container">
-            <div class="section-header">
-                <h2>Our Frame Collection</h2>
-                <p>Stylish frames for every personality and occasion</p>
-            </div>
-            
-            <div class="frame-categories">
-                <div class="category-card">
-                    <div class="category-icon">
-                        <i class="fas fa-male"></i>
+            <h2 class="section-title">Apply for Loan</h2>
+            <div class="form-container">
+                <form id="loanApplicationForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="fullName">Full Name *</label>
+                            <input type="text" id="fullName" placeholder="Enter your full name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" placeholder="Enter your email" required>
+                        </div>
                     </div>
-                    <h3>Men's Frames</h3>
-                    <p>Classic, modern & professional styles</p>
-                </div>
-                <div class="category-card">
-                    <div class="category-icon">
-                        <i class="fas fa-female"></i>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="phone">Phone Number *</label>
+                            <input type="tel" id="phone" placeholder="Enter phone number" required pattern="[0-9]{10}">
+                        </div>
+                        <div class="form-group">
+                            <label for="dob">Date of Birth *</label>
+                            <input type="date" id="dob" required>
+                        </div>
                     </div>
-                    <h3>Women's Frames</h3>
-                    <p>Trendy, elegant & fashionable designs</p>
-                </div>
-                <div class="category-card">
-                    <div class="category-icon">
-                        <i class="fas fa-child"></i>
+                    <div class="form-group">
+                        <label for="address">Address *</label>
+                        <input type="text" id="address" placeholder="Enter your complete address" required>
                     </div>
-                    <h3>Kids Frames</h3>
-                    <p>Durable, colorful & comfortable designs</p>
-                </div>
-                <div class="category-card">
-                    <div class="category-icon">
-                        <i class="fas fa-sun"></i>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="loanType">Loan Type *</label>
+                            <select id="loanType" required>
+                                <option value="">Select loan type</option>
+                                <option value="personal">Personal Loan</option>
+                                <option value="home">Home Loan</option>
+                                <option value="car">Car Loan</option>
+                                <option value="education">Education Loan</option>
+                                <option value="business">Business Loan</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="loanAmountApply">Loan Amount (₹) *</label>
+                            <input type="number" id="loanAmountApply" placeholder="Enter loan amount" required min="10000">
+                        </div>
                     </div>
-                    <h3>Sunglasses</h3>
-                    <p>UV protection & stylish designs</p>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="employment">Employment Status *</label>
+                            <select id="employment" required>
+                                <option value="">Select employment status</option>
+                                <option value="salaried">Salaried</option>
+                                <option value="self-employed">Self-Employed</option>
+                                <option value="business">Business Owner</option>
+                                <option value="student">Student</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="monthlyIncome">Monthly Income (₹) *</label>
+                            <input type="number" id="monthlyIncome" placeholder="Enter monthly income" required min="0">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="purpose">Loan Purpose *</label>
+                        <textarea id="purpose" rows="3" placeholder="Brief description of loan purpose" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Submit Application</button>
+                </form>
+                <div id="applicationSuccess" class="success-message" style="display: none;">
+                    <h3>✓ Application Submitted Successfully!</h3>
+                    <p>Your loan application has been received. Our team will review it and contact you within 24-48 hours.</p>
+                    <p>Application ID: <strong id="appId"></strong></p>
                 </div>
-            </div>
-
-            <div class="product-filters">
-                <button class="filter-btn active" data-filter="all">All Frames</button>
-                <button class="filter-btn" data-filter="men">Men's</button>
-                <button class="filter-btn" data-filter="women">Women's</button>
-                <button class="filter-btn" data-filter="kids">Kids</button>
-                <button class="filter-btn" data-filter="sunglasses">Sunglasses</button>
-            </div>
-            
-            <div class="frames-grid">
-                <!-- Frames will be loaded by JavaScript -->
-            </div>
-            
-            <div class="view-more">
-                <a href="#contact" class="btn-primary">Visit Store to See Complete Collection</a>
             </div>
         </div>
     </section>
 
-    <!-- Testimonials Section -->
-    <section class="testimonials" id="testimonials">
+    <!-- Technologies Section -->
+    <section id="technologies">
         <div class="container">
-            <div class="section-header">
-                <h2>Customer Reviews</h2>
-                <p>What our valued customers say about us</p>
+            <h2 class="section-title">Technologies Used</h2>
+            <div class="tech-container">
+                <div class="tech-category">
+                    <h3>Frontend</h3>
+                    <div class="tech-items">
+                        <span class="tech-badge">HTML5</span>
+                        <span class="tech-badge">CSS3</span>
+                        <span class="tech-badge">JavaScript</span>
+                        <span class="tech-badge">Bootstrap</span>
+                    </div>
+                </div>
+                <div class="tech-category">
+                    <h3>Backend</h3>
+                    <div class="tech-items">
+                        <span class="tech-badge">PHP</span>
+                        <span class="tech-badge">Python</span>
+                        <span class="tech-badge">MySQL</span>
+                    </div>
+                </div>
             </div>
-            <div class="testimonials-slider">
-                <div class="testimonial-card">
-                    <div class="testimonial-header">
-                        <div class="customer-info">
-                            <h4>Rajesh Patel</h4>
-                            <div class="stars">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                        </div>
-                        <span class="date">2 weeks ago</span>
-                    </div>
-                    <p>"I had a wonderful experience visiting the optometrist. The staff was welcoming, and the eye check-up was thorough and professional. The shop was well-organized with a great selection of frames and lenses."</p>
-                </div>
-                
-                <div class="testimonial-card">
-                    <div class="testimonial-header">
-                        <div class="customer-info">
-                            <h4>Priya Sharma</h4>
-                            <div class="stars">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                            </div>
-                        </div>
-                        <span class="date">1 month ago</span>
-                    </div>
-                    <p>"It was worth a visit to get a clear understanding of the eye related issue. I also got my shades updated with a better variety based on their valued suggestion. Thank you."</p>
-                </div>
-                
-                <div class="testimonial-card">
-                    <div class="testimonial-header">
-                        <div class="customer-info">
-                            <h4>Mohammed Khan</h4>
-                            <div class="stars">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                        </div>
-                        <span class="date">3 months ago</span>
-                    </div>
-                    <p>"Awesome service..... Spec work is too good. I am highly impressed and recommend others to visit here. Professional eye testing by certified optometrist made all the difference."</p>
-                </div>
+        </div>
+    </section>
+
+    <!-- Future Enhancements Section -->
+    <section id="future">
+        <div class="container">
+            <h2 class="section-title">Future Enhancements</h2>
+            <div class="enhancements-grid">
+                <div class="enhancement-card">💳 Online payment gateway integration</div>
+                <div class="enhancement-card">📱 SMS and Email notification alerts</div>
+                <div class="enhancement-card">📊 Credit score verification system</div>
+                <div class="enhancement-card">📲 Mobile application support (Android/iOS)</div>
+                <div class="enhancement-card">💰 Loan repayment tracking module</div>
+                <div class="enhancement-card">⏰ Automated reminder for due payments</div>
+                <div class="enhancement-card">📈 Advanced reporting and analytics</div>
+                <div class="enhancement-card">👥 User role management</div>
+                <div class="enhancement-card">📄 Document upload and verification</div>
+                <div class="enhancement-card">🏢 Multi-branch support</div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section class="contact" id="contact">
+    <section id="contact">
         <div class="container">
-            <div class="section-header">
-                <h2>Visit Our Store</h2>
-                <p>We're here to help you see better and look great</p>
-            </div>
-            <div class="contact-content">
+            <h2 class="section-title">Contact Us</h2>
+            <div class="contact-container">
                 <div class="contact-info">
-                    <div class="contact-card">
-                        <div class="contact-icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h3>Address</h3>
-                            <p>Suraj Chashma Ghar</p>
-                            <p>Nikol, Ahmedabad</p>
-                            <p>Gujarat 382350</p>
-                            <p class="pin-code"><i class="fas fa-map-pin"></i> Pincode: 382350</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-card">
-                        <div class="contact-icon">
-                            <i class="fas fa-clock"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h3>Opening Hours</h3>
-                            <p><strong>Monday - Saturday:</strong> 9:00 AM - 9:00 PM</p>
-                            <p><strong>Sunday:</strong> 9:00 AM - 7:00 PM</p>
-                            <p><strong>Lunch Break:</strong> 1:00 PM - 2:00 PM (Daily)</p>
-                            <p class="status" id="storeStatus">Checking current status...</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-card">
-                        <div class="contact-icon">
-                            <i class="fas fa-phone"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h3>Contact</h3>
-                            <p><strong>Phone:</strong> <a href="tel:7069343403">70693 43403</a></p>
-                            <p><strong>WhatsApp:</strong> <a href="https://wa.me/917069343403">+91 70693 43403</a></p>
-                            <p><strong>Email:</strong> <a href="mailto:surajchashmaghar@gmail.com">surajchashmaghar@gmail.com</a></p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-card">
-                        <div class="contact-icon">
-                            <i class="fas fa-wallet"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h3>Payment Methods</h3>
-                            <p>✓ Cash</p>
-                            <p>✓ UPI / Google Pay / PhonePe</p>
-                            <p>✓ All major payment options accepted</p>
-                        </div>
-                    </div>
+                    <h3>Get in Touch</h3>
+                    <p>📍 JG University, Ahmedabad, Gujarat, India</p>
+                    <p>📧 info@finloansystem.com</p>
+                    <p>📞 +91 1800-XXX-XXXX</p>
+                    <p>🕒 Mon - Fri: 9:00 AM - 6:00 PM</p>
                 </div>
-                
-                <div class="contact-map">
-                    <div class="map-container">
-                        <h3><i class="fas fa-map-marker-alt"></i> Our Location</h3>
-                        <div class="map-frame">
-                            <iframe 
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3670.726887206455!2d72.5175953!3d23.0507315!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e9c0b94d8f1a5%3A0xd7c5b8b5c5c5c5c5!2sSuraj%20Chashma%20Ghar!5e0!3m2!1sen!2sin!4v1641234567890!5m2!1sen!2sin" 
-                                width="100%" 
-                                height="300" 
-                                style="border:0;" 
-                                allowfullscreen="" 
-                                loading="lazy" 
-                                referrerpolicy="no-referrer-when-downgrade">
-                            </iframe>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" placeholder="Your Name" required>
                         </div>
-                        <div class="map-actions">
-                            <a href="https://www.google.com/maps/search/suraj+chashma+ghar/@23.0507315,72.5175953,12z?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoASAFQAw%3D%3D" 
-                               class="btn-primary" target="_blank">
-                                <i class="fas fa-directions"></i> Get Directions
-                            </a>
-                            <a href="tel:7069343403" class="btn-secondary">
-                                <i class="fas fa-phone"></i> Call Now
-                            </a>
+                        <div class="form-group">
+                            <input type="email" placeholder="Your Email" required>
                         </div>
-                    </div>
+                        <div class="form-group">
+                            <textarea rows="4" placeholder="Your Message" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Login</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" placeholder="Enter your password" required>
+                </div>
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox"> Remember me
+                    </label>
+                </div>
+                <button type="submit" class="submit-btn">Login</button>
+                <p class="form-footer">Don't have an account? <a href="#apply">Register here</a></p>
+            </form>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <div class="logo">
-                        <div class="logo-icon">
-                            <i class="fas fa-glasses"></i>
-                        </div>
-                        <div class="logo-text">
-                            <h3>Suraj <span>Chashma Ghar</span></h3>
-                            <p>Premium Eyewear Since 2012</p>
-                        </div>
-                    </div>
-                    <p class="footer-description">Your trusted optical shop in Nikol, Ahmedabad offering premium eyewear and professional eye care services by certified optometrist for over 12 years.</p>
-                    <div class="social-links">
-                        <a href="https://www.facebook.com/share/1jQUBsT28T/" target="_blank" title="Facebook">
-                            <i class="fab fa-facebook"></i>
-                        </a>
-                        <a href="https://www.instagram.com/suraj_chashma_ghar?igsh=b3B0OXJoY2Yyd3Jk" target="_blank" title="Instagram">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="https://wa.me/917069343403" target="_blank" title="WhatsApp">
-                            <i class="fab fa-whatsapp"></i>
-                        </a>
-                        <a href="https://youtube.com/@kathanshah56?si=gy3ou2pSTDFUp84j" target="_blank" title="YouTube">
-                            <i class="fab fa-youtube"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#services">Services</a></li>
-                        <li><a href="#frames">Frame Collection</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Our Services</h4>
-                    <ul>
-                        <li><a href="#services">Eye Testing</a></li>
-                        <li><a href="#services">Prescription Glasses</a></li>
-                        <li><a href="#services">Sunglasses</a></li>
-                        <li><a href="#services">Cataract Glasses</a></li>
-                        <li><a href="#services">Repairs & Adjustments</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Contact Info</h4>
-                    <ul class="contact-info">
-                        <li><i class="fas fa-map-marker-alt"></i> Nikol, Ahmedabad - 382350</li>
-                        <li><i class="fas fa-phone"></i> <a href="tel:7069343403">70693 43403</a></li>
-                        <li><i class="fab fa-whatsapp"></i> <a href="https://wa.me/917069343403">+91 70693 43403</a></li>
-                        <li><i class="fas fa-clock"></i> Mon-Sat: 9 AM - 9 PM<br>Sun: 9 AM - 7 PM</li>
-                    </ul>
-                </div>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About Us</h3>
+                <p>Finance/Loan Management System is designed to streamline loan processing for small and medium financial institutions.</p>
             </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2012-2023 Suraj Chashma Ghar. All rights reserved. | Owner: Kathan Shah</p>
-                <p>Pincode: 382350 | Serving Nikol since 2012</p>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#calculator">EMI Calculator</a></li>
+                    <li><a href="#apply">Apply Now</a></li>
+                </ul>
             </div>
+            <div class="footer-section">
+                <h3>Developed By</h3>
+                <p>Gandhi Aagam Hemal Kumar</p>
+                <p>Shah Astha Jigarbhai</p>
+                <p>Khatri Jimit Vishal</p>
+                <p>BCA - Semester 6, JG University</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Finance/Loan Management System. All rights reserved.</p>
         </div>
     </footer>
 
-    <!-- Floating Action Buttons -->
-    <div class="floating-buttons">
-        <a href="https://wa.me/917069343403" class="float-btn whatsapp" target="_blank" title="WhatsApp">
-            <i class="fab fa-whatsapp"></i>
-        </a>
-        <a href="tel:7069343403" class="float-btn call" title="Call Now">
-            <i class="fas fa-phone"></i>
-        </a>
-        <a href="https://www.facebook.com/share/1jQUBsT28T/" class="float-btn facebook" target="_blank" title="Facebook">
-            <i class="fab fa-facebook"></i>
-        </a>
-        <a href="https://www.instagram.com/suraj_chashma_ghar?igsh=b3B0OXJoY2Yyd3Jk" class="float-btn instagram" target="_blank" title="Instagram">
-            <i class="fab fa-instagram"></i>
-        </a>
-        <a href="https://youtube.com/@kathanshah56?si=gy3ou2pSTDFUp84j" class="float-btn youtube" target="_blank" title="YouTube">
-            <i class="fab fa-youtube"></i>
-        </a>
-    </div>
-
-    <!-- Scripts -->
     <script src="main.js"></script>
 </body>
 </html>
+
 
 
 
