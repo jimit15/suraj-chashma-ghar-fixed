@@ -3,11 +3,437 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Finance/Loan Management System - JG University</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Finance/Loan Management System</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Navigation */
+        nav {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-menu {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .nav-menu a:hover {
+            opacity: 0.8;
+        }
+
+        .btn-login {
+            background: white;
+            color: #667eea;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            border-radius: 3px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 120px 20px 80px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .btn-primary, .btn-secondary {
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #667eea;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-primary:hover, .btn-secondary:hover {
+            transform: translateY(-2px);
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-card h3 {
+            font-size: 3rem;
+            font-weight: bold;
+        }
+
+        .stat-card p {
+            font-size: 1rem;
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #333;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        /* Features */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+
+        /* Objectives */
+        #objectives {
+            background: #f8f9fa;
+        }
+
+        .objectives-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .objective-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            border-left: 5px solid #667eea;
+            transition: transform 0.3s;
+        }
+
+        .objective-card:hover {
+            transform: translateX(10px);
+        }
+
+        .objective-card h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+
+        /* Calculator */
+        #calculator {
+            background: #f8f9fa;
+        }
+
+        .calculator-container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: white;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .form-group input[type="range"] {
+            accent-color: #667eea;
+        }
+
+        .form-group span {
+            display: block;
+            margin-top: 0.5rem;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 30px;
+            font-size: 1rem;
+            cursor: pointer;
+            width: 100%;
+            transition: transform 0.3s;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .result {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .result h3 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .result p {
+            font-size: 1.2rem;
+            margin: 0.5rem 0;
+        }
+
+        /* Apply Section */
+        #apply {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        #apply .section-title {
+            color: white;
+        }
+
+        #apply .section-title::after {
+            background: white;
+        }
+
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 3rem;
+            border-radius: 15px;
+            color: #333;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .success-message {
+            text-align: center;
+            padding: 3rem;
+        }
+
+        .success-message h3 {
+            color: #28a745;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                flex-direction: column;
+                background: linear-gradient(135deg, #667eea, #764ba2);
+                width: 100%;
+                padding: 2rem 0;
+                transition: 0.3s;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Navigation -->
     <nav id="navbar">
         <div class="nav-container">
             <div class="logo">💰 FinLoan System</div>
@@ -17,8 +443,6 @@
                 <li><a href="#objectives">Objectives</a></li>
                 <li><a href="#calculator">EMI Calculator</a></li>
                 <li><a href="#apply">Apply Loan</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="#login" class="btn-login">Login</a></li>
             </ul>
             <div class="hamburger" id="hamburger">
                 <span></span>
@@ -28,33 +452,31 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-content">
-            <h1 class="fade-in">Finance/Loan Management System</h1>
-            <p class="fade-in">A web-based application designed to manage loan-related activities such as customer registration, loan application, approval, EMI calculation, repayment tracking, and report generation.</p>
-            <div class="hero-buttons fade-in">
+            <h1>Finance/Loan Management System</h1>
+            <p>A web-based application designed to manage loan-related activities such as customer registration, loan application, approval, EMI calculation, repayment tracking, and report generation.</p>
+            <div class="hero-buttons">
                 <a href="#apply" class="btn-primary">Apply for Loan</a>
                 <a href="#calculator" class="btn-secondary">Calculate EMI</a>
             </div>
         </div>
         <div class="hero-stats">
             <div class="stat-card">
-                <h3 id="customerCount">0</h3>
+                <h3 id="customerCount">5000</h3>
                 <p>Happy Customers</p>
             </div>
             <div class="stat-card">
-                <h3 id="loanCount">0</h3>
+                <h3 id="loanCount">3500</h3>
                 <p>Loans Approved</p>
             </div>
             <div class="stat-card">
-                <h3 id="processingTime">0</h3>
+                <h3 id="processingTime">24</h3>
                 <p>Hours Processing Time</p>
             </div>
         </div>
     </section>
 
-    <!-- Features Section -->
     <section id="features">
         <div class="container">
             <h2 class="section-title">System Features</h2>
@@ -93,7 +515,6 @@
         </div>
     </section>
 
-    <!-- Objectives Section -->
     <section id="objectives">
         <div class="container">
             <h2 class="section-title">Our Objectives</h2>
@@ -114,38 +535,10 @@
                     <h3>💳 Accurate EMI Tracking</h3>
                     <p>Automatically calculate EMIs based on loan amount, interest rate, and tenure, and help track repayment details efficiently.</p>
                 </div>
-                <div class="objective-card">
-                    <h3>📈 Quick Access to Reports</h3>
-                    <p>Generate and view loan reports instantly, helping administrators make better and faster decisions.</p>
-                </div>
-                <div class="objective-card">
-                    <h3>🔒 Enhanced Security</h3>
-                    <p>Ensure secure and reliable data storage with user authentication and role-based access control.</p>
-                </div>
             </div>
         </div>
     </section>
 
-    <!-- Advantages Section -->
-    <section id="advantages">
-        <div class="container">
-            <h2 class="section-title">Key Advantages</h2>
-            <div class="advantages-container">
-                <div class="advantage-item">✓ Saves time and manual effort</div>
-                <div class="advantage-item">✓ Reduces paperwork and file handling</div>
-                <div class="advantage-item">✓ Accurate and automatic EMI calculation</div>
-                <div class="advantage-item">✓ Faster loan processing and approval</div>
-                <div class="advantage-item">✓ Easy access to customer and loan data</div>
-                <div class="advantage-item">✓ Centralized database management</div>
-                <div class="advantage-item">✓ Reduces human errors</div>
-                <div class="advantage-item">✓ Secure and reliable data storage</div>
-                <div class="advantage-item">✓ Improves overall efficiency</div>
-                <div class="advantage-item">✓ User-friendly system</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- EMI Calculator Section -->
     <section id="calculator">
         <div class="container">
             <h2 class="section-title">EMI Calculator</h2>
@@ -153,19 +546,19 @@
                 <form id="emiForm">
                     <div class="form-group">
                         <label for="loanAmount">Loan Amount (₹)</label>
-                        <input type="number" id="loanAmount" placeholder="Enter loan amount" required min="1000">
+                        <input type="number" id="loanAmount" value="500000" required>
                         <input type="range" id="loanAmountRange" min="10000" max="10000000" value="500000" step="10000">
                         <span id="loanAmountDisplay">₹5,00,000</span>
                     </div>
                     <div class="form-group">
                         <label for="interestRate">Annual Interest Rate (%)</label>
-                        <input type="number" id="interestRate" placeholder="Enter interest rate" required min="1" max="30" step="0.1">
+                        <input type="number" id="interestRate" value="10" step="0.1" required>
                         <input type="range" id="interestRateRange" min="5" max="20" value="10" step="0.1">
                         <span id="interestRateDisplay">10%</span>
                     </div>
                     <div class="form-group">
                         <label for="loanTenure">Loan Tenure (Months)</label>
-                        <input type="number" id="loanTenure" placeholder="Enter tenure in months" required min="6" max="360">
+                        <input type="number" id="loanTenure" value="60" required>
                         <input type="range" id="loanTenureRange" min="6" max="360" value="60" step="6">
                         <span id="loanTenureDisplay">60 months (5 years)</span>
                     </div>
@@ -175,15 +568,11 @@
                     <h3>Monthly EMI: ₹<span id="emiAmount">0</span></h3>
                     <p>Total Interest: ₹<span id="totalInterest">0</span></p>
                     <p>Total Amount: ₹<span id="totalAmount">0</span></p>
-                    <div class="chart-container">
-                        <canvas id="emiChart"></canvas>
-                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Loan Application Section -->
     <section id="apply">
         <div class="container">
             <h2 class="section-title">Apply for Loan</h2>
@@ -202,7 +591,7 @@
                     <div class="form-row">
                         <div class="form-group">
                             <label for="phone">Phone Number *</label>
-                            <input type="tel" id="phone" placeholder="Enter phone number" required pattern="[0-9]{10}">
+                            <input type="tel" id="phone" placeholder="Enter phone number" required>
                         </div>
                         <div class="form-group">
                             <label for="dob">Date of Birth *</label>
@@ -227,7 +616,7 @@
                         </div>
                         <div class="form-group">
                             <label for="loanAmountApply">Loan Amount (₹) *</label>
-                            <input type="number" id="loanAmountApply" placeholder="Enter loan amount" required min="10000">
+                            <input type="number" id="loanAmountApply" placeholder="Enter loan amount" required>
                         </div>
                     </div>
                     <div class="form-row">
@@ -238,17 +627,12 @@
                                 <option value="salaried">Salaried</option>
                                 <option value="self-employed">Self-Employed</option>
                                 <option value="business">Business Owner</option>
-                                <option value="student">Student</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="monthlyIncome">Monthly Income (₹) *</label>
-                            <input type="number" id="monthlyIncome" placeholder="Enter monthly income" required min="0">
+                            <input type="number" id="monthlyIncome" placeholder="Enter monthly income" required>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="purpose">Loan Purpose *</label>
-                        <textarea id="purpose" rows="3" placeholder="Brief description of loan purpose" required></textarea>
                     </div>
                     <button type="submit" class="submit-btn">Submit Application</button>
                 </form>
@@ -261,107 +645,6 @@
         </div>
     </section>
 
-    <!-- Technologies Section -->
-    <section id="technologies">
-        <div class="container">
-            <h2 class="section-title">Technologies Used</h2>
-            <div class="tech-container">
-                <div class="tech-category">
-                    <h3>Frontend</h3>
-                    <div class="tech-items">
-                        <span class="tech-badge">HTML5</span>
-                        <span class="tech-badge">CSS3</span>
-                        <span class="tech-badge">JavaScript</span>
-                        <span class="tech-badge">Bootstrap</span>
-                    </div>
-                </div>
-                <div class="tech-category">
-                    <h3>Backend</h3>
-                    <div class="tech-items">
-                        <span class="tech-badge">PHP</span>
-                        <span class="tech-badge">Python</span>
-                        <span class="tech-badge">MySQL</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Future Enhancements Section -->
-    <section id="future">
-        <div class="container">
-            <h2 class="section-title">Future Enhancements</h2>
-            <div class="enhancements-grid">
-                <div class="enhancement-card">💳 Online payment gateway integration</div>
-                <div class="enhancement-card">📱 SMS and Email notification alerts</div>
-                <div class="enhancement-card">📊 Credit score verification system</div>
-                <div class="enhancement-card">📲 Mobile application support (Android/iOS)</div>
-                <div class="enhancement-card">💰 Loan repayment tracking module</div>
-                <div class="enhancement-card">⏰ Automated reminder for due payments</div>
-                <div class="enhancement-card">📈 Advanced reporting and analytics</div>
-                <div class="enhancement-card">👥 User role management</div>
-                <div class="enhancement-card">📄 Document upload and verification</div>
-                <div class="enhancement-card">🏢 Multi-branch support</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact">
-        <div class="container">
-            <h2 class="section-title">Contact Us</h2>
-            <div class="contact-container">
-                <div class="contact-info">
-                    <h3>Get in Touch</h3>
-                    <p>📍 JG University, Ahmedabad, Gujarat, India</p>
-                    <p>📧 info@finloansystem.com</p>
-                    <p>📞 +91 1800-XXX-XXXX</p>
-                    <p>🕒 Mon - Fri: 9:00 AM - 6:00 PM</p>
-                </div>
-                <div class="contact-form">
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <input type="text" placeholder="Your Name" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" placeholder="Your Email" required>
-                        </div>
-                        <div class="form-group">
-                            <textarea rows="4" placeholder="Your Message" required></textarea>
-                        </div>
-                        <button type="submit" class="submit-btn">Send Message</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Login Modal -->
-    <div id="loginModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Login</h2>
-            <form id="loginForm">
-                <div class="form-group">
-                    <label for="loginEmail">Email</label>
-                    <input type="email" id="loginEmail" placeholder="Enter your email" required>
-                </div>
-                <div class="form-group">
-                    <label for="loginPassword">Password</label>
-                    <input type="password" id="loginPassword" placeholder="Enter your password" required>
-                </div>
-                <div class="form-group">
-                    <label>
-                        <input type="checkbox"> Remember me
-                    </label>
-                </div>
-                <button type="submit" class="submit-btn">Login</button>
-                <p class="form-footer">Don't have an account? <a href="#apply">Register here</a></p>
-            </form>
-        </div>
-    </div>
-
-    <!-- Footer -->
     <footer>
         <div class="footer-content">
             <div class="footer-section">
@@ -390,9 +673,133 @@
         </div>
     </footer>
 
-    <script src="main.js"></script>
+    <script>
+        // Mobile Menu
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('navMenu');
+
+        hamburger.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', function() {
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // EMI Calculator Sliders
+        const loanAmountInput = document.getElementById('loanAmount');
+        const loanAmountRange = document.getElementById('loanAmountRange');
+        const loanAmountDisplay = document.getElementById('loanAmountDisplay');
+
+        const interestRateInput = document.getElementById('interestRate');
+        const interestRateRange = document.getElementById('interestRateRange');
+        const interestRateDisplay = document.getElementById('interestRateDisplay');
+
+        const loanTenureInput = document.getElementById('loanTenure');
+        const loanTenureRange = document.getElementById('loanTenureRange');
+        const loanTenureDisplay = document.getElementById('loanTenureDisplay');
+
+        loanAmountRange.addEventListener('input', function() {
+            const value = parseInt(this.value);
+            loanAmountInput.value = value;
+            loanAmountDisplay.textContent = '₹' + value.toLocaleString('en-IN');
+        });
+
+        loanAmountInput.addEventListener('input', function() {
+            const value = parseInt(this.value) || 0;
+            loanAmountRange.value = value;
+            loanAmountDisplay.textContent = '₹' + value.toLocaleString('en-IN');
+        });
+
+        interestRateRange.addEventListener('input', function() {
+            const value = parseFloat(this.value);
+            interestRateInput.value = value;
+            interestRateDisplay.textContent = value + '%';
+        });
+
+        interestRateInput.addEventListener('input', function() {
+            const value = parseFloat(this.value) || 0;
+            interestRateRange.value = value;
+            interestRateDisplay.textContent = value + '%';
+        });
+
+        loanTenureRange.addEventListener('input', function() {
+            const value = parseInt(this.value);
+            loanTenureInput.value = value;
+            const years = Math.floor(value / 12);
+            loanTenureDisplay.textContent = value + ' months (' + years + ' years)';
+        });
+
+        loanTenureInput.addEventListener('input', function() {
+            const value = parseInt(this.value) || 0;
+            loanTenureRange.value = value;
+            const years = Math.floor(value / 12);
+            loanTenureDisplay.textContent = value + ' months (' + years + ' years)';
+        });
+
+        // EMI Calculation
+        const emiForm = document.getElementById('emiForm');
+        const emiResult = document.getElementById('emiResult');
+
+        emiForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const principal = parseFloat(loanAmountInput.value);
+            const annualRate = parseFloat(interestRateInput.value);
+            const tenure = parseInt(loanTenureInput.value);
+            
+            const monthlyRate = annualRate / 12 / 100;
+            const emi = principal * monthlyRate * Math.pow(1 + monthlyRate, tenure) / (Math.pow(1 + monthlyRate, tenure) - 1);
+            
+            const totalAmount = emi * tenure;
+            const totalInterest = totalAmount - principal;
+            
+            document.getElementById('emiAmount').textContent = Math.round(emi).toLocaleString('en-IN');
+            document.getElementById('totalInterest').textContent = Math.round(totalInterest).toLocaleString('en-IN');
+            document.getElementById('totalAmount').textContent = Math.round(totalAmount).toLocaleString('en-IN');
+            
+            emiResult.style.display = 'block';
+            emiResult.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        });
+
+        // Loan Application
+        const loanApplicationForm = document.getElementById('loanApplicationForm');
+        const applicationSuccess = document.getElementById('applicationSuccess');
+
+        loanApplicationForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const appId = 'LN' + Date.now().toString().slice(-8);
+            document.getElementById('appId').textContent = appId;
+            
+            loanApplicationForm.style.display = 'none';
+            applicationSuccess.style.display = 'block';
+            
+            applicationSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            
+            setTimeout(function() {
+                loanApplicationForm.reset();
+                loanApplicationForm.style.display = 'block';
+                applicationSuccess.style.display = 'none';
+            }, 10000);
+        });
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
+
 
 
 
